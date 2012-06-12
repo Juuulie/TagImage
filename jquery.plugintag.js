@@ -110,6 +110,14 @@
 				})
 				.focus();	
 
+
+	  		$("#textarea").click(function(){
+	  			$(this).val("");
+	  		});
+
+
+			$("#textarea").val("Ecrire son tag").css({"font-size":"11px", "color":"#aaa"});
+			
 			if(!element){ createTagSquare(e); }
 			createButtonSubmit();
 			if(!element){ createButtonCancel(); }

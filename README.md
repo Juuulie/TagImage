@@ -3,7 +3,7 @@ TagImage is a jQuery Plugin to edit tags on images. <br />
 You can do a selection on an image to tag a person or to write a review.
 <br />
 <br />
-Check out the <a href="http://tulizzz.github.com/TagImage/">demo page</a>.
+Check out the <a href="http://www.juliepellerin.com/plugin_tagimage/">demo page</a>.
 
 <h1>Usage</h1>
 
