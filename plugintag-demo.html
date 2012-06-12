@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery plugin Tag</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <link rel="stylesheet" href="stylesheet/style-demo.css" />
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.js"></script>
+        <script type="text/javascript" src="jquery.plugintag.js"></script>
+			<style>
+			img{
+				width:600px;
+			}
+			</style>
+        <script>
+            $(document).ready(function(){
+				$("#tagimage").tagImage({
+					formcolor : "#fff",
+					bordercolor: "#0a3b3a",
+					formtextcolor : "#0a3b3a",
+					textcolor : "#0a3b3a",
+				});
+            });
+            // Pour récuperer les tags : $().tagImage.getTags()
+                       
+        </script>
+    </head>
+    
+    <body>
+        <div id="main">
+        	<h1>Plugin TagImage</h1>
+        	<h2>Click on image to start tagging</h2>
+        	
+			<img id="tagimage" src="img/nepal.jpg" alt="nepal" title="nepal" />	
+			
+			<div id="info">
+				<p>Documentation on <a href="#">Github</a></p>
+				<p id="by">Plugin by Tulizzz</p>
+			</div>		
+        </div>
+    </body>
+</html>
