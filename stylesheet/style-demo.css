@@ -12,8 +12,6 @@ a{
 	width:700px;
 	margin:40px auto;
 	background-color:#1f1e1e;
-	/*border-right:2px solid #4a9593;
-	border-left:2px solid #4a9593;*/
 	border:2px solid #4a9593;
 	padding-top:20px;
 	min-height : 620px;
@@ -54,4 +52,50 @@ p>a{
 }
 p>a:hover{
 	color:#89cbc9;
+}
+
+
+
+#form-block{
+	box-shadow : 4px 4px 6px #000;	
+	background-color:#1F1E1E !important;
+	border : 1px solid #000 !important;	
+	padding:10px !important;
+	width:200px !important; 
+	height:95px !important;
+	margin-top:5px !important;
+}
+
+#textarea{
+	max-width:198px !important;
+	max-height:60px !important;
+	min-height:60px !important;
+	min-width:198px !important;
+}
+#tagsubmit, #tagcancel, #tagremove{
+
+	padding: 3px 20px !important;
+	
+	color:#fff !important;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	border: 1px solid #666 !important;
+	background:#000 !important;
+	margin-right:5px !important;
+	margin-top:5px;
+}
+
+
+#tagsubmit:hover, #tagcancel:hover{
+	background-color : #333 !important;
+}
+
+.notetexte{
+	color: #fff !important;
+	background-color:#000 !important;
+}
+	
+.view, .note{
+	border: 3px solid #000 !important;
 }

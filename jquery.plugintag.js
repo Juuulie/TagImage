@@ -9,11 +9,6 @@
 			notesize  : "50px", 	// to change the size of the square
 			modeview  : true,		// to show/hide tags when mouseover/mouseout the image
 			
-			formcolor 	  : "#191919", 	// to change the color of the form
-			bordercolor	  : "#000", 	// to change the color of borders
-			formtextcolor : "#000",		// to change the color of form's text		
-			textcolor 	  : "#fff",		// to change the color of tag's text
-			
 		}, options);
 		
 
@@ -93,10 +88,10 @@
 					top 			: e.pageY+(parseInt(settings.notesize)*0.5)+5+'px',
 					left 			: e.pageX-(parseInt(settings.notesize)*0.5)+'px',
 					zIndex 			: "9000",
-					backgroundColor : settings.formcolor,
+					backgroundColor : "#191919",
 					width 			: "114px",
 					padding 		: "6px",
-					border			: "1px solid"+settings.bordercolor		
+					border			: "1px solid #000"	
 				});	
     		$("#textarea")
 				.css({
@@ -107,8 +102,8 @@
 					padding		: "0px",
 					margin 		: "0px",
 					marginBottom: "4px"
-				})
-				.focus();	
+				});
+				//.focus();	
 
 
 	  		$("#textarea").click(function(){
@@ -116,7 +111,7 @@
 	  		});
 
 
-			$("#textarea").val("Ecrire son tag").css({"font-size":"11px", "color":"#aaa"});
+			$("#textarea").val("Ecrire son tag").css({"font-size":"12px", "color":"#666"});
 			
 			if(!element){ createTagSquare(e); }
 			createButtonSubmit();
@@ -135,7 +130,7 @@
 				if(!element){
 					setTag(e);
 				}else{
-					element.css({opacity : "0.4"});	
+					element.css({opacity : "0.5"});	
 					updateTag(e,element);
 				}
 				return false;
@@ -154,7 +149,7 @@
 			$(".note").css({
 					width  		: settings.notesize,
 					height 		: settings.notesize,
-					border 		: "1px solid"+settings.formcolor,	
+					border 		: "1px solid #191919",	
 			});
 		}		
 		// Create a submit button		
@@ -164,11 +159,11 @@
 	    	submit.insertAfter($("#textarea"))
 	    		.css({
 		    		backgroundColor : "#fff",
-		    		color 			: settings.formtextcolor,
+		    		color 			: "#000",
 		    		fontSize 		: "10px",
 		    		marginRight 	: "2px",
 		    		width 			: "27px",
-		    		border 			: "1px solid"+settings.bordercolor,
+		    		border 			: "1px solid #000",
 		    		cursor			: "pointer",
 		    	});
 		}		
@@ -179,10 +174,10 @@
 	    	cancel.insertAfter($("#tagsubmit"))
 				.css({
 		    		backgroundColor : "#fff",
-		    		color 			: settings.formtextcolor,
+		    		color 			: "#000",
 		    		fontSize 		: "10px",
 		    		width 			: "27px",
-		    		border 			: "1px solid"+settings.bordercolor,
+		    		border 			: "1px solid #000",
 	    			cursor			: "pointer",	
 	    			});
 
@@ -192,7 +187,7 @@
 				opac = true;				
 				edit = true;
 				if(element){
-					element.css({opacity : "0.4"});	
+					element.css({opacity : "0.5"});	
 				}
 				$("#form-block").remove(); 
 				$(".note").remove();
@@ -204,9 +199,9 @@
 	    	var suppr = $('<input type="button" id="tagremove" title="delete" value="Delete" name="remove" />');
 	    	suppr.insertAfter($("#tagsubmit"))
 	    		.css({
-		    		border 			: "1px solid"+settings.bordercolor,
+		    		border 			: "1px solid #000",
 		    		backgroundColor : "#fff",
-		    		color 			: settings.formtextcolor,
+		    		color 			: "#000",
 		    		fontSize 		: "10px",
 	    			marginRight 	: "2px",
 	    			width 			: "54px",
@@ -246,17 +241,17 @@
 
 			var note = $("#notedef"+compteur);
 			note.css({ 
-				border : "1px solid"+ settings.formcolor, 
-				opacity : "0.4",
+				border : "2px solid #191919", 
+				opacity : "0.5",
 				})
 				.after(tagBlockTexte);
 				
 			$(".notetexte").css({
-				color			: settings.textcolor,
+				color			: "#fff",
 				"font-family" 	: "arial",
 				"font-size" 	: "12px",	
 				"max-width" 	: "110px",
-				 backgroundColor: settings.formcolor, 
+				 backgroundColor: "#191919", 
 				 padding 		: "3px",
 				 display 		: "none",
 			})
@@ -277,7 +272,7 @@
 				.mouseout(function(){
 					if(opac == true){
 						element = $(this);
-						element.css({opacity : "0.4"});					
+						element.css({opacity : "0.5"});					
 						element.next().css({display : "none"});
 					}else{
 						element = $(this);
