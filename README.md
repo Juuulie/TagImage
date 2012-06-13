@@ -5,7 +5,7 @@ You can do a selection on an image to tag a person or to write a review.
 <br />
 Check out the <a href="http://www.juliepellerin.com/plugin_tagimage/">demo page</a>.
 
-<h1>Usage</h1>
+<h2>Usage</h2>
 
 <h3>How to install it ?</h3>
 To use the plugin you first have to add jQuery in your head section :
@@ -30,7 +30,7 @@ and load the plugin :
 &lt;/script&gt;</code></pre>
 
 
-<h1>Options</h1>
+<h2>Options</h2>
 
 <h3>removable</h3>
 If the user can delete tags on the picture. <br />
