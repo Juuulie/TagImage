@@ -54,7 +54,7 @@ possible values : true/false <br />
 
 
 
-<h3>On witch browsers does it work ?</h3>
+<h2>On witch browser does it work ?</h2>
 This plugin was tested on FF 12.0, Safari 5.1.5, Google Chrome 20.0.1132.11    
 
 
