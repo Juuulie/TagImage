@@ -22,7 +22,7 @@
 		var imgHeight =img.height(); 
 		img.wrap('<div id="image-view"></div>');
 		$("#image-view").css({
-			width : imgWidth+"px",
+			width : "0px",
 		});
 		img.css("cursor","pointer");
 	       

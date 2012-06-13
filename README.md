@@ -29,6 +29,31 @@ and load the plugin :
 	});	
 &lt;/script&gt;</code></pre>
 
+
+<h1>Options</h1>
+
+<h3>removable</h3>
+If the user can delete tags on the picture.
+default value : true
+possible values : true/false
+
+<h3>updatable</h3>
+If the user can update tags on the picture.
+default value : true
+possible values : true/false
+
+<h3>notesize</h3>
+The square width/height.
+default value : "50px"
+possible values : an integer in px
+
+<h3>modeview</h3>
+To show/hide tags on mouseover/mouseout the picture.
+default value : true
+possible values : true/false
+
+
+
 <h3>On witch browsers does it work ?</h3>
 This plugin was tested on FF 12.0, Safari 5.1.5, Google Chrome 20.0.1132.11    
 
