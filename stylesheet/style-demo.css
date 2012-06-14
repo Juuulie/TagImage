@@ -87,7 +87,7 @@ p>a:hover{
 }
 
 
-#tagsubmit:hover, #tagcancel:hover{
+#tagsubmit:hover, #tagcancel:hover, #tagremove:hover{
 	background-color : #333 !important;
 }
 

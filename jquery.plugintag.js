@@ -102,8 +102,8 @@
 					padding		: "0px",
 					margin 		: "0px",
 					marginBottom: "4px"
-				});
-				//.focus();	
+				})
+				.focus();	
 
 
 	  		$("#textarea").click(function(){
@@ -111,7 +111,7 @@
 	  		});
 
 
-			$("#textarea").val("Ecrire son tag").css({"font-size":"12px", "color":"#666"});
+			$("#textarea").css({"font-size":"12px", "color":"#666"});
 			
 			if(!element){ createTagSquare(e); }
 			createButtonSubmit();
@@ -243,6 +243,8 @@
 			note.css({ 
 				border : "2px solid #191919", 
 				opacity : "0.5",
+				cursor : "pointer",
+				
 				})
 				.after(tagBlockTexte);
 				
