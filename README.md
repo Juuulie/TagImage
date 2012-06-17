@@ -33,22 +33,22 @@ and load the plugin :
 <h1>Options</h1>
 
 <h3>removable</h3>
-If the user can delete tags on the picture. <br />
+If user can delete tags on the picture. <br />
 default value : true <br />
 possible values : true/false <br />
 
 <h3>updatable</h3>
-If the user can update tags on the picture. <br />
+If user can update tags on the picture. <br />
 default value : true <br />
 possible values : true/false <br />
 
 <h3>notesize</h3>
-The square width/height. <br />
+Square width/height. <br />
 default value : "50px" <br />
 possible values : an integer in px <br />
 
 <h3>modeview</h3>
-To show/hide tags on mouseover/mouseout the picture. <br />
+Show/Hide tags on mouseover/mouseout the picture. <br />
 default value : true <br />
 possible values : true/false <br />
 
