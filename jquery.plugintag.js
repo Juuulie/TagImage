@@ -70,7 +70,7 @@
 		}
 
 
-		// Put existing tag on image	
+		// Put existing tags on image	
 		function SaveSetTag(tab){	
     		compteur++;
     		edit = true;
