@@ -29,16 +29,15 @@ and load the plugin :
 	});	
 &lt;/script&gt;</code></pre>
 
-
-To positionate the picture with margin properties, you have to define properties for the div with this id : #image-view.
+<br />
+To positionate the picture with margin properties, <br />
+you have to define properties for <code>#image-view</code>.
 
 For example :
-<pre><code>
-	#image-view{
-		margin-left:70px;
-		margin-bottom:30px;	
-	}
-</code></pre>		
+<pre><code>#image-view{
+	margin-left:70px;
+	margin-bottom:30px;	
+}</code></pre>		
 
 
 <h1>Options</h1>
