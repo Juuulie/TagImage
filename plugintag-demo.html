@@ -14,7 +14,21 @@
 			</style>
         <script>
             $(document).ready(function(){
-				$("#tagimage").tagImage();
+				$("#tagimage").tagImage({
+					result : [
+						{	'object': $("<div></div>"),
+							'value' : "Tom",
+							'x'		: 425,
+							'y'		: 378,
+						},
+						{	'object': $("<div></div>"),
+							'value' : "Maman Nathalie",
+							'x'		: 649,
+							'y'		: 419,
+						}]
+					
+					
+				});
             });
                        
         </script>

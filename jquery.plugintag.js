@@ -25,7 +25,7 @@
 			width : "0px",
 		});
 		img.css("cursor","pointer");
-	       
+	    
 // ------------------------------------------------------------------------
 	    return this.each(function() {  
 	    		    	
@@ -39,8 +39,119 @@
 	  		if (!$.data(this, 'plugin_' + this.pluginName)) {
 	  			$.data(this, 'plugin_' + this.pluginName,{tags:[]});
 	  		}
+	  		
+	  		viewTag(options.result);
+
 	    });
 // ------------------------------------------------------------------------
+
+// - Put existing tags ------------------------------------------------------
+		
+		// View existing tags
+		function viewTag(tab){
+			
+			for(var i=0; i<tab.length; i++){
+				
+				var obj = tab[i].object;
+	
+				//var note = tab[i].object;
+				var tagTexte = tab[i].value;
+	
+				var posy = tab[i].y-(parseInt(settings.notesize)*0.5)-5;
+				var posx = tab[i].x-(parseInt(settings.notesize)*0.5);
+				
+				var noteBlock = $('<div class="note-block" style="position:absolute; top:'+posy+'px; left:'+posx+'px"></div>');
+				$("#image-view").append(noteBlock);
+				noteBlock.append(obj);
+				
+				SaveSetTag(tab[i]);
+			}
+					
+		}
+
+
+		// Put existing tag on image	
+		function SaveSetTag(tab){	
+    		compteur++;
+    		edit = true;
+		
+    		var tagTexte = tab.value;
+    		tagBlockTexte = $('<div class="notetexte"><p class="note-p">'+tagTexte+'</p></div>')
+
+    		tab.object.attr("id","notedef"+compteur);
+
+			var note = $("#notedef"+compteur);
+			$("#notedef"+compteur).addClass("view");    		
+
+			note.css({ 
+				border : "2px solid #191919", 
+				opacity : "0.5",
+				cursor : "pointer",
+					width		: settings.notesize,
+					height		: settings.notesize,
+					border		:"2px solid #000",				
+				})
+				.after(tagBlockTexte);
+				
+			$(".notetexte").css({
+				color			: "#fff",
+				"font-family" 	: "arial",
+				"font-size" 	: "12px",	
+				"max-width" 	: "110px",
+				 backgroundColor: "#191919", 
+				 padding 		: "3px",
+				 display 		: "none",	 
+			});
+			
+    		$(".note-p").css({ margin : "0px",});
+
+			var pos = {
+				pageX : tab.x,
+				pageY : tab.y,
+			}					
+				
+			data = setTagData(pos,note,tagTexte);
+						
+			$("#notedef"+compteur)
+				.mouseover(function(){
+					if(opac == true){
+						element = $(this);
+						element.css({opacity : "1"});
+						element.next().css({display : "block"});
+					}else{
+						element.next().css({display : "none"});						
+					}	
+				})
+				.mouseout(function(){
+					if(opac == true){
+						element = $(this);
+						element.css({opacity : "0.5"});					
+						element.next().css({display : "none"});
+					}else{
+						element = $(this);
+						element.css({opacity : "1"});					
+						element.next().css({display : "none"});
+					}
+				})
+				.click(function(){
+					if(settings.updatable == true){
+						if(edit == true){
+							opac = false;
+							
+							element = $(this);
+							element.next().css({display : "none"});	
+							var pos = {
+								pageX : tab.x,
+								pageY : tab.y,
+							}				
+							editTag(pos,element);
+						}
+					}
+			});				
+		}			
+
+
+// - Show/Hide tags --------------------------------------------------------------------------------
 		
 		// Show/Hide tags when mouseover/mouseout the image 
 		function view(){
@@ -70,6 +181,7 @@
 			edit = false;
 			createForm(e);
 		}
+
 
 // - Create a form ------------------------------------------------------------------------------------
 		
@@ -224,10 +336,11 @@
 			});		
 		}
 
+
 // - Add a tag ------------------------------------------------------------------------------------
 
 		// Add a new tag	
-		function setTag(e,element){	
+		function setTag(e){	 // e,element
 			compteur ++;						
     		edit = true;
 		
@@ -288,7 +401,7 @@
 							opac = false;
 							
 							element = $(this);
-							element.next().css({display : "none"});						
+							element.next().css({display : "none"});		
 							editTag(e,element);
 						}
 					}
@@ -308,11 +421,13 @@
 			return data;
 		}
 
+
 // - Edit a tag ------------------------------------------------------------------------------------
 		
 		// Edit an existing tag
 		function editTag(e,element){
 			edit = false;
+
 			var texte = element.next().text();
 
 			createForm(e,element,texte);						
@@ -325,11 +440,11 @@
     		element.next().html(tagTexte);
   		
 			$("#form-block").remove(); 
-			
 			updateTagData(e,element,tagTexte);
 		}
 		// Save the modification in the data 
 		function updateTagData(e,element,tagtexte){
+			
 			for(var i=0; i<data.tags.length; i++){
 				if(data.tags[i].x == e.pageX ){
 					data.tags[i].value = tagtexte;
@@ -339,7 +454,7 @@
 	};
 	
 	$.fn.tagImage.getTags = function(){	
-		return $(img).data('plugin_' + this.pluginName);	
+		return $(img).data('plugin_' + this.pluginName);	// return data
 	}	
   
 })( jQuery );
