@@ -15,6 +15,7 @@
         <script>
             $(document).ready(function(){
 				$("#tagimage").tagImage({
+					removable : false,
 					result : [
 						{	'object': $("<div></div>"),
 							'value' : "Tom",
@@ -39,14 +40,21 @@
         	
 			<img id="tagimage" src="img/nepal.jpg" alt="nepal" title="nepal" />	
 
-			<p id="suite"><a href="http://juliepellerin.com/plugin_tagimage/demo_removable_false">> Option removable</a></p>
+			<pre>
+				$("#tagimage").tagImage({
+					removable : false,	
+				});
+			</pre>
+
+			<p id="suite"><a href="http://juliepellerin.com/plugin_tagimage/demo_updatable_false">> Option updatable</a></p>
 			
 			<div id="info">
 				<p>Documentation on <a href="https://github.com/Tulizzz/TagImage">Github</a></p>
 				<p id="by">Plugin by Tulizzz</p>
-			</div>
-			
-					
+			</div>	
+
+
+				
         </div>
     </body>
 </html>

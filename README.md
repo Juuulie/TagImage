@@ -30,6 +30,17 @@ and load the plugin :
 &lt;/script&gt;</code></pre>
 
 
+To positionate the picture with margin properties, you have to define properties for the div with this id : #image-view.
+
+For example :
+<pre><code>
+	#image-view{
+		margin-left:70px;
+		margin-bottom:30px;	
+	}
+</code></pre>		
+
+
 <h1>Options</h1>
 
 <h3>removable</h3>
@@ -42,15 +53,6 @@ If user can update tags on the picture. <br />
 default value : true <br />
 possible values : true/false <br />
 
-<h3>notesize</h3>
-Square width/height. <br />
-default value : "50px" <br />
-possible values : an integer in px <br />
-
-<h3>modeview</h3>
-Show/Hide tags on mouseover/mouseout the picture. <br />
-default value : true <br />
-possible values : true/false <br />
 
 
 

@@ -7,24 +7,34 @@
 			removable : true, 		// to remove a tag
 			updatable : true, 		// to update a tag
 			notesize  : "50px", 	// to change the size of the square
-			modeview  : true,		// to show/hide tags when mouseover/mouseout the image
-			
+						
 		}, options);
 		
 
 		img = $(this);
 		var edit = true;
 		var compteur = 0;
-		var viewi = true;
 		var opac = true;
+
+	
+		var positioni = img.offset();
+		var img_posleft = positioni.left;
+		var img_postop = positioni.top;
+
 	
 		var imgWidth = img.width(); 
 		var imgHeight =img.height(); 
 		img.wrap('<div id="image-view"></div>');
 		$("#image-view").css({
-			width : "0px",
+			width : imgWidth,
+			height: imgHeight,
+			position:"relative",
 		});
 		img.css("cursor","pointer");
+		
+		var marg = $("#image-view").css("marginLeft");
+		var px = marg.indexOf('px');
+		var margi = marg.slice(0,px);
 	    
 // ------------------------------------------------------------------------
 	    return this.each(function() {  
@@ -57,8 +67,8 @@
 				//var note = tab[i].object;
 				var tagTexte = tab[i].value;
 	
-				var posy = tab[i].y-(parseInt(settings.notesize)*0.5)-5;
 				var posx = tab[i].x-(parseInt(settings.notesize)*0.5);
+				var posy = tab[i].y+(parseInt(settings.notesize)*0.5)-5;
 				
 				var noteBlock = $('<div class="note-block" style="position:absolute; top:'+posy+'px; left:'+posx+'px"></div>');
 				$("#image-view").append(noteBlock);
@@ -140,41 +150,20 @@
 							
 							element = $(this);
 							element.next().css({display : "none"});	
-							var pos = {
-								pageX : tab.x,
-								pageY : tab.y,
+
+							var posi = {
+								pageX : tab.x+img_posleft+(parseInt(settings.notesize))+20,
+								pageY : tab.y+img_postop+(parseInt(settings.notesize))-4,
 							}				
-							editTag(pos,element);
+							editTag(posi,element);
 						}
 					}
 			});				
 		}			
 
 
-// - Show/Hide tags --------------------------------------------------------------------------------
+// - Add tag ----------------------------------------------------------------------------------------
 		
-		// Show/Hide tags when mouseover/mouseout the image 
-		function view(){
-			if(settings.modeview == true){
-				if(viewi == true){
-					$("#image-view")
-						.mouseover(function(){
-							$(".note-block").css({display : "block"});							
-						})
-						.mouseout(function(){
-							$(".note-block").css({display : "none"});
-						});
-				}else{
-					$("#image-view")
-					.mouseover(function(){
-						$(".note-block").css({display : "block"})
-					})
-					.mouseout(function(){
-						$(".note-block").css({display : "block"})
-					 });
-				}
-			}				
-		}
 		
 		// Add a tag				
 		function addTag(e){
@@ -187,8 +176,6 @@
 		
 		// Create a form
 		function createForm(e,element,texte){
-			viewi = false;
-			view();
 			textarea = texte || '';
 			form = $('<div id="form-block"><form id="form"> <textarea id="textarea" name="tagtext" maxlength="100">'+textarea+'</textarea> </form></div>');        		     		
 
@@ -197,8 +184,8 @@
     		$("#form-block")
 				.css({
 					position		:"absolute",
-					top 			: e.pageY+(parseInt(settings.notesize)*0.5)+5+'px',
-					left 			: e.pageX-(parseInt(settings.notesize)*0.5)+'px',
+					top 			: e.pageY-img_postop+(parseInt(settings.notesize)*0.5)+5+'px',
+					left 			: e.pageX-img_posleft-margi-(parseInt(settings.notesize)*0.5)+'px',					
 					zIndex 			: "9000",
 					backgroundColor : "#191919",
 					width 			: "114px",
@@ -236,8 +223,6 @@
 			}		
 	
 			$('#form').submit(function() {
-				viewi = true;
-				view();
 				opac = true;
 				if(!element){
 					setTag(e);
@@ -252,11 +237,12 @@
 		function createTagSquare(e){
 			var note = $('<div class="note-block"><div class="note"></div></div>');
 
+
 			note.insertBefore($("#form-block"))
 				.css ({
 					position 	:"absolute",
-					top 		: e.pageY-(parseInt(settings.notesize)*0.5)+'px',
-					left 		: e.pageX-(parseInt(settings.notesize)*0.5)+'px',
+					top 		: e.pageY-img_postop-(parseInt(settings.notesize)*0.5)+'px',
+					left 		: e.pageX-img_posleft-margi-(parseInt(settings.notesize)*0.5)+'px',
 				});
 			$(".note").css({
 					width  		: settings.notesize,
@@ -294,8 +280,6 @@
 	    			});
 
 			cancel.click(function() {
-				viewi = true;
-				view();	
 				opac = true;				
 				edit = true;
 				if(element){
@@ -321,8 +305,6 @@
 	    		});
 
 			suppr.click(function() {
-				viewi = true;
-				view();
 				edit = true;
 				opac = true;
 				element.remove();
@@ -340,7 +322,7 @@
 // - Add a tag ------------------------------------------------------------------------------------
 
 		// Add a new tag	
-		function setTag(e){	 // e,element
+		function setTag(e){	
 			compteur ++;						
     		edit = true;
 		
@@ -371,8 +353,13 @@
 				 display 		: "none",
 			})
     		$(".note-p").css({ margin : "0px",});
-				
-			data = setTagData(e,note,tagTexte);
+
+			var pos = {
+				pageX : e.pageX-img_posleft-margi,
+				pageY : e.pageY-img_postop-(parseInt(settings.notesize))+4,
+			}					
+			
+			data = setTagData(pos,note,tagTexte);
 						
 			$("#notedef"+compteur)
 				.mouseover(function(){
@@ -399,7 +386,7 @@
 					if(settings.updatable == true){
 						if(edit == true){
 							opac = false;
-							
+
 							element = $(this);
 							element.next().css({display : "none"});		
 							editTag(e,element);
@@ -415,7 +402,7 @@
 				'object': note,
 				'value' : tagTexte,
 				'x'		: e.pageX,
-				'y'		: e.pageY
+				'y'		: e.pageY,
 			});		
 		
 			return data;
